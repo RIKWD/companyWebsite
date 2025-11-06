@@ -410,25 +410,54 @@ footer {
 
 @media (max-width: 768px) {
     header {
-        padding: 1.5rem 2rem;
+        padding: 1rem 1.5rem;
+    }
+    .logo {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
     }
     nav ul {
         display: none;
     }
     .hero {
-        padding: 6rem 2rem 3rem;
+        padding: 5rem 1.5rem 3rem;
+        min-height: 90vh;
     }
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.6;
     }
     .services-section,
     .portfolio-section,
     .process-section,
     .contact-section {
-        padding: 4rem 2rem;
+        padding: 3rem 1.5rem;
+    }
+    .section-title {
+        font-size: 0.75rem;
+        margin-bottom: 2rem;
+    }
+    .service-item h3,
+    .service-price {
+        font-size: 1.5rem;
+    }
+    .service-item p {
+        font-size: 0.95rem;
     }
     .contact-section h2 {
         font-size: 2rem;
+    }
+    .contact-details {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 0.85rem;
     }
     .service-header {
         flex-direction: column;
@@ -436,5 +465,33 @@ footer {
     }
     .service-price {
         margin-top: 0.5rem;
+    }
+    .portfolio-item {
+        font-size: 3rem;
+    }
+    .portfolio-caption h3 {
+        font-size: 1.1rem;
+    }
+    .portfolio-caption p {
+        font-size: 0.85rem;
+    }
+    .process-item {
+        grid-template-columns: 50px 1fr;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+    .process-number {
+        font-size: 2rem;
+    }
+    .process-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.6rem;
+    }
+    .process-content p {
+        font-size: 0.95rem;
+    }
+    footer {
+        padding: 1.5rem;
+        font-size: 0.75rem;
     }
 }
