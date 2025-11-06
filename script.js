@@ -1,6 +1,6 @@
 // Typewriter effect with formatted text
 const textParts = [
-    { text: "RiK is a ", style: "normal" },
+    { text: "RiKA is a ", style: "normal" },
     { text: "web development company", style: "italic" },
     { text: " creating ", style: "normal" },
     { text: "brand identities", style: "bold" },
