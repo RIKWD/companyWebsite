@@ -85,3 +85,103 @@ function typeWriter() {
 window.addEventListener('load', () => {
     typeWriter();
 });
+
+// Lightbox functionality for template gallery
+const templateData = {
+    1: [
+        { src: 'https://via.placeholder.com/1200x800/8b5cf6/ffffff?text=Template+1+-+Image+1', caption: 'Template 1 - Homepage' },
+        { src: 'https://via.placeholder.com/1200x800/8b5cf6/ffffff?text=Template+1+-+Image+2', caption: 'Template 1 - About Page' },
+        { src: 'https://via.placeholder.com/1200x800/8b5cf6/ffffff?text=Template+1+-+Image+3', caption: 'Template 1 - Services' }
+    ],
+    2: [
+        { src: 'https://via.placeholder.com/1200x800/ec4899/ffffff?text=Template+2+-+Image+1', caption: 'Template 2 - Homepage' },
+        { src: 'https://via.placeholder.com/1200x800/ec4899/ffffff?text=Template+2+-+Image+2', caption: 'Template 2 - Gallery' },
+        { src: 'https://via.placeholder.com/1200x800/ec4899/ffffff?text=Template+2+-+Image+3', caption: 'Template 2 - Contact' }
+    ],
+    3: [
+        { src: 'https://via.placeholder.com/1200x800/f59e0b/ffffff?text=Template+3+-+Image+1', caption: 'Template 3 - Homepage' },
+        { src: 'https://via.placeholder.com/1200x800/f59e0b/ffffff?text=Template+3+-+Image+2', caption: 'Template 3 - Portfolio' },
+        { src: 'https://via.placeholder.com/1200x800/f59e0b/ffffff?text=Template+3+-+Image+3', caption: 'Template 3 - Team' }
+    ],
+    4: [
+        { src: 'https://via.placeholder.com/1200x800/06b6d4/ffffff?text=Template+4+-+Image+1', caption: 'Template 4 - Homepage' },
+        { src: 'https://via.placeholder.com/1200x800/06b6d4/ffffff?text=Template+4+-+Image+2', caption: 'Template 4 - Services' },
+        { src: 'https://via.placeholder.com/1200x800/06b6d4/ffffff?text=Template+4+-+Image+3', caption: 'Template 4 - Reviews' }
+    ]
+};
+
+let currentTemplate = null;
+let currentImageIndex = 0;
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.querySelector('.lightbox-caption');
+const closeBtn = document.querySelector('.lightbox-close');
+const prevBtn = document.querySelector('.lightbox-prev');
+const nextBtn = document.querySelector('.lightbox-next');
+
+// Open lightbox when clicking template card
+document.querySelectorAll('.template-card').forEach(card => {
+    card.addEventListener('click', function() {
+        currentTemplate = this.getAttribute('data-template');
+        currentImageIndex = 0;
+        showLightbox();
+    });
+});
+
+// Show lightbox
+function showLightbox() {
+    const images = templateData[currentTemplate];
+    if (images && images[currentImageIndex]) {
+        lightboxImg.src = images[currentImageIndex].src;
+        lightboxCaption.textContent = images[currentImageIndex].caption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+}
+
+// Close lightbox
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+closeBtn.addEventListener('click', closeLightbox);
+
+// Close on clicking outside image
+lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Previous image
+prevBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const images = templateData[currentTemplate];
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentImageIndex].src;
+    lightboxCaption.textContent = images[currentImageIndex].caption;
+});
+
+// Next image
+nextBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const images = templateData[currentTemplate];
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    lightboxImg.src = images[currentImageIndex].src;
+    lightboxCaption.textContent = images[currentImageIndex].caption;
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+        closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+        prevBtn.click();
+    } else if (e.key === 'ArrowRight') {
+        nextBtn.click();
+    }
+});
