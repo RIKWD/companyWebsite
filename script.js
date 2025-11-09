@@ -86,7 +86,6 @@ window.addEventListener('load', () => {
     typeWriter();
     initScrollProgress();
     initSectionAnimations();
-    initScrollArrows();
 });
 
 // Lightbox functionality for template gallery
@@ -251,19 +250,4 @@ function initSectionAnimations() {
     if (sections[0]) {
         sections[0].classList.add('section-visible');
     }
-}
-
-// Scroll Arrows
-function initScrollArrows() {
-    const scrollArrows = document.querySelectorAll('.scroll-arrow');
-    const sections = document.querySelectorAll('section');
-
-    scrollArrows.forEach((arrow, index) => {
-        arrow.addEventListener('click', () => {
-            // Scroll to the next section
-            if (sections[index + 1]) {
-                sections[index + 1].scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
 }
