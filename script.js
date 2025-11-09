@@ -84,6 +84,9 @@ function typeWriter() {
 // Start the typewriter effect when the page loads
 window.addEventListener('load', () => {
     typeWriter();
+    initScrollProgress();
+    initSectionAnimations();
+    initScrollArrows();
 });
 
 // Lightbox functionality for template gallery
@@ -185,3 +188,82 @@ document.addEventListener('keydown', function(e) {
         nextBtn.click();
     }
 });
+
+// Scroll Progress Indicator
+function initScrollProgress() {
+    const sections = document.querySelectorAll('section');
+    const dots = document.querySelectorAll('.scroll-progress-dot');
+
+    // Update active dot based on scroll position
+    function updateActiveDot() {
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+        sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[index]) {
+                    dots[index].classList.add('active');
+                }
+            }
+        });
+    }
+
+    // Click dot to scroll to section
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Update on scroll
+    window.addEventListener('scroll', updateActiveDot);
+
+    // Initial update
+    updateActiveDot();
+}
+
+// Section Transition Animations
+function initSectionAnimations() {
+    const sections = document.querySelectorAll('section');
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.15,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-visible');
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Make first section visible immediately
+    if (sections[0]) {
+        sections[0].classList.add('section-visible');
+    }
+}
+
+// Scroll Arrows
+function initScrollArrows() {
+    const scrollArrows = document.querySelectorAll('.scroll-arrow');
+    const sections = document.querySelectorAll('section');
+
+    scrollArrows.forEach((arrow, index) => {
+        arrow.addEventListener('click', () => {
+            // Scroll to the next section
+            if (sections[index + 1]) {
+                sections[index + 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
