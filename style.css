@@ -316,14 +316,14 @@ nav a:hover {
 }
 
 .addon-item h4 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: #ffffff;
     margin-bottom: 0.5rem;
 }
 
 .addon-price {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 400;
     color: #ffffff;
     display: block;
@@ -333,7 +333,7 @@ nav a:hover {
 .old-price {
     text-decoration: line-through;
     color: rgba(255, 255, 255, 0.5);
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-right: 0.5rem;
 }
 
@@ -343,7 +343,7 @@ nav a:hover {
 }
 
 .addon-desc {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -558,6 +558,11 @@ nav a:hover {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.template-link {
+    text-decoration: none;
+    display: block;
+}
+
 .template-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
@@ -689,41 +694,151 @@ nav a:hover {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.process-list {
-    max-width: 900px;
-    margin-top: 3rem;
+/* Value Message */
+.value-message {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 3rem 3.5rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.process-item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 3rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.process-item:last-child {
-    border-bottom: none;
-}
-
-.process-number {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: #ffffff;
-}
-
-.process-content h3 {
-    font-size: 1.5rem;
+.value-message h3 {
+    font-size: 2rem;
     font-weight: 400;
-    margin-bottom: 0.8rem;
     color: #ffffff;
+    margin-bottom: 1.8rem;
+    text-align: center;
 }
 
-.process-content p {
-    font-size: 1rem;
+.value-message p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 1.3rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.value-message p:last-child {
+    margin-bottom: 0;
+}
+
+/* Ownership Highlight */
+.ownership-highlight {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(79, 172, 254, 0.2));
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.ownership-highlight h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.ownership-highlight p {
+    font-size: 1.05rem;
     line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Inter', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Process Steps Intro */
+.process-steps-intro {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.process-steps-intro h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.process-steps-intro p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Process Flowchart */
+.process-flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 1rem;
+    padding: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.flowchart-step {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    min-width: 160px;
+    max-width: 180px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    flex: 0 1 auto;
+}
+
+.flowchart-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.step-number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+.flowchart-step h4 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.3;
+}
+
+.flowchart-step p {
+    font-size: 0.85rem;
+    line-height: 1.5;
     color: rgba(255, 255, 255, 0.85);
     font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.flowchart-arrow {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+    font-weight: 300;
 }
 
 /* Contact Section */
@@ -816,9 +931,16 @@ footer {
     .template-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .process-item {
-        grid-template-columns: 60px 1fr;
-        gap: 2rem;
+    .process-flowchart {
+        gap: 0.8rem;
+    }
+    .flowchart-step {
+        min-width: 140px;
+        max-width: 160px;
+        padding: 1.5rem 1.2rem;
+    }
+    .flowchart-arrow {
+        font-size: 1.3rem;
     }
     /* Pricing Tablet */
     .addons-grid {
@@ -1006,20 +1128,58 @@ footer {
         padding: 0.5rem 1rem;
         font-size: 1.5rem;
     }
-    .process-item {
-        grid-template-columns: 50px 1fr;
-        gap: 1.5rem;
-        padding: 2rem 0;
+    /* Process Mobile */
+    .value-message {
+        padding: 2rem 1.8rem;
+        margin-bottom: 2rem;
     }
-    .process-number {
-        font-size: 2rem;
+    .value-message h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.3rem;
     }
-    .process-content h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.6rem;
+    .value-message p {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: justify;
     }
-    .process-content p {
+    .ownership-highlight {
+        padding: 2rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .ownership-highlight h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    .ownership-highlight p {
         font-size: 0.95rem;
+    }
+    .process-steps-intro h3 {
+        font-size: 1.4rem;
+    }
+    .process-steps-intro p {
+        font-size: 0.95rem;
+    }
+    .process-flowchart {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        flex-wrap: nowrap;
+    }
+    .flowchart-step {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 1.8rem 1.5rem;
+    }
+    .flowchart-arrow {
+        font-size: 1.5rem;
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+    .flowchart-step h4 {
+        font-size: 1.1rem;
+    }
+    .flowchart-step p {
+        font-size: 0.9rem;
     }
     footer {
         padding: 1.5rem;
